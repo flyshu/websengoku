@@ -1,0 +1,84 @@
+<style type="text/css">
+.box {
+	border:#ccc thin solid;
+	padding:2px;
+}
+</style>
+<script language="javascript">
+
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="30%" style="padding-right:10px;" valign="top">
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>个人属性（剩余点数）</h2>
+  </div>
+  <div class="bm_c">
+    头像
+  </div>
+</div>
+</td>
+<td width="40%" style="padding-right:10px;" valign="top">
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>个人属性（剩余点数）</h2>
+    
+  </div>
+  <div class="bm_c">
+    头像
+  </div>
+</div>
+</td>
+<td width="30%" style="padding-right:10px;" valign="top">
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>个人属性</h2>
+  </div>
+  <div class="bm_c" style="padding:5px 5px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <!--{loop $global_cfg[ability] $key $val}-->
+    <tr><td class="box" width="25%">{$val}</td><td class="box">{$u_ability_array[$key][ability]}</td>
+    <td class="box" width="25%">经验</td><td class="box">{$u_ability_array[$key][exp]}</td>
+    </tr>
+    <!--{/loop}-->
+    </table>
+  </div>
+</div>
+</td>
+</tr>
+</table>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>武功招数</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td class="box">家族</td><td class="box">a</td>
+    <td class="box">城市</td><td class="box">b</td></tr>
+    <tr><td class="box">所在地</td><td class="box">c</td>
+    <td class="box">身份</td><td class="box">c</td></tr>
+    <tr><td class="box">官职</td><td class="box">d</td>
+    <td class="box">俸禄</td><td class="box">100</td></tr>    
+    </table>    
+    
+    </div>
+  </div>
+</div>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>天赋技能</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c"> d </div>
+  </div>
+</div>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>声望</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c"> d </div>
+  </div>
+</div>

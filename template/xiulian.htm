@@ -1,0 +1,48 @@
+<style type="text/css">
+.box{
+	border-bottom:#ccc thin solid;	
+}
+</style>
+<script language="javascript">
+
+</script>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>能力修炼 体力:{$u_power}</h2>
+  </div>
+  <div class="bm">
+  <form action="{$basename2}&action=xiulian" method="post">
+  	<input name="step" type="hidden" value="2" />
+    <div class="bm_c" style="padding:5px 5px;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat ftb mtm mbm">
+    <tr><td class="xw1">属性名称</td><td class="xw1">属性值</td><td class="xw1">经验值</td><td class="xw1">操作</td></tr> 
+    <!--{loop $global_cfg[ability] $key $val}-->
+	<!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td><input name="xiulian" type="radio" value="{$key}" checked="checked" />{$val}</td><td>{$u_ability[main_abi][$key]}</td><td>{$u_ability[main_exp][$key]}</td>
+    <td></td>
+    </tr>
+    <!--{/loop}-->
+    </table>
+    </div>
+    <div class="bm_c" style="padding:5px 5px;text-align:center">
+    <input name="" type="submit" value="开始修炼" />  
+    </div>
+    </form>
+  </div>
+</div>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>天赋技能</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c"> d </div>
+  </div>
+</div>
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>声望</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c"> d </div>
+  </div>
+</div>

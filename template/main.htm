@@ -1,0 +1,90 @@
+<!--{template common/header}-->
+<style type="text/css">
+
+
+</style>
+<div id="pt" class="bm cl"><div class="z">
+<a href="index.php" class="nvhm" title="{lang homepage}">$_G[setting][bbsname]</a><em> &rsaquo; </em><a href="plugin.php?id=websengoku:main">简单战国</a></div> 
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    var a1 = $("#ct .appl .tbn li a");
+	if ("{$index}" == "") {
+		a1.eq(0).parent("li").addClass("a");
+	}else{
+		for (key in a1){
+			a= a1.eq(key);
+			if (a.attr("href").indexOf("{$index}") >= 0){
+				a.parent("li").addClass("a");
+				break;
+			}		
+		}		
+	}
+	var a2 = $(".mn .bm ul li a");
+	//alert ("{$action}");
+	if ("{$action}" == ""){
+		a2.eq(0).parent("li").addClass("a");
+	}else{
+		for (key in a2){
+			a= a2.eq(key);
+			if (a.attr("href").indexOf("{$action}") >= 0){
+				a.parent("li").addClass("a");
+				break;
+			}		
+		}				
+	}
+
+});	
+</script>
+<div id="ct" class="wp cl ct2_a">
+	<div class="appl">
+		<div class="tbn">
+			<h2 class="mt bbda">简单战国</h2>
+			<ul>
+            <li><a href='plugin.php?id=websengoku:main'>首页</a></li>
+            <!--{loop $global_cfg[sub_hack] $key $val}-->
+            <!--{if $val[display] == 1}-->
+            <li><a href="plugin.php?id=websengoku:main&module={$val[name]}">{$val[text]}</a></li>
+            <!--{/if}-->
+            <!--{/loop}-->
+
+			</ul>
+
+		</div>
+			
+			<div style="padding:10px 0;"></div>
+			<div>
+				<h2>{lang huxcity:copyright}</h2>
+			</div>
+			<div>
+
+
+                        <a href="#" title="" target="_blank">ADMINSHU
+                        </a>
+
+			</div>
+
+
+	</div>
+
+<div class="mn">
+<!--{if $index == ''}-->
+{template websengoku:status}
+<!--{elseif $index == 'myinfo'}-->
+{template websengoku:myinfo}
+<!--{elseif $index == 'chaoting'}-->
+{template websengoku:chaoting}
+<!--{elseif $index == 'reg'}-->
+{template websengoku:reg}
+<!--{elseif $index == 'xiulian'}-->
+{template websengoku:xiulian}
+<!--{elseif $index == 'family'}-->
+{template websengoku:family}
+<!--{elseif $index == 'family'}-->
+{template websengoku:setting}
+<!--{/if}-->
+</div>
+
+</div>
+<!--{template common/footer}-->

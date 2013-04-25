@@ -1,0 +1,24 @@
+<div class="bm bmw fl">
+<div style="padding:2px;"></div>
+<!--{if !$action}-->
+  <div class="bm_h cl">
+    <h2>家族列表</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat ftb mtm mbm">
+	<tr><td class="xw1">家族名称</td><td class="xw1">家督名称</td><td class="xw1">家族介绍</td><td class="xw1">家族图标</td><td class="xw1">家族操作</td></tr> 
+    <!--{loop $f_info $key $val}-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[f_name]}</td><td>{$val[f_host_id]}</td><td>{$val[f_intro]}</td><td>{$val[f_icon]}</td>
+    <td><a href="{$basename2}&action=join&fid={$val[fid]}">加入</a></td></tr> 
+    <!--{/loop}--> 
+    </table>    
+    
+    </div>
+  </div>
+
+<!--{/if}-->
+</div>
+
+</div>

@@ -1,0 +1,156 @@
+<div class="bm bmw fl">
+<ul class="tb cl">
+<li><a href="{$basename2}">家族列表</a></li>
+<li><a href="{$basename2}&action=myfamily">我的家族</a></li>
+<li><a href="{$basename2}&action=memberlist">家族成员</a></li>
+<li><a href="{$basename2}&action=missionhall">任务大厅</a></li>
+<li><a href="{$basename2}&action=mymission">我的任务</a></li>
+<li><a href="{$basename2}&action=setting">管理设置</a></li>
+</ul>
+<div style="padding:2px;"></div>
+<!--{if !$action}-->
+  <div class="bm_h cl">
+    <h2>家族列表</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat ftb mtm mbm" style="table-layout:fixed">
+	<tr><td class="xw1">家族名称</td><td class="xw1">家督名称</td><td class="xw1">家族介绍</td><td class="xw1">家族图标</td><td class="xw1">家族操作</td></tr> 
+    <!--{loop $f_info $key $val}-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[f_name]}</td><td>{$val[f_host_id]}</td><td>{$val[f_intro]}</td><td>{$val[f_icon]}</td>
+    <td><a href="{$basename2}&action=join&fid={$val[fid]}">加入</a></td></tr> 
+    <!--{/loop}--> 
+    </table>    
+    
+    </div>
+    <div class="bm_h"> 
+		{$multipage}
+    </div>
+  </div>
+<!--{elseif $action == myfamily}-->
+  <div class="bm_h cl">
+    <h2>我的家族</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat">
+    <tr class="alt"><td width="30%">家督</td></tr>
+    <tr><td width="30%">领地</td></tr>
+    <tr><td width="30%">介绍</td></tr>
+    <tr><td width="30%">公告</td></tr>
+    <tr><td width="30%">金钱</td></tr>
+    <tr><td width="30%">城市</td></tr>
+    <tr><td width="30%">图标</td></tr>
+    
+    </table>
+   
+    
+    </div>
+  </div>
+  <div class="bm_h cl">
+    <h2>家族功能</h2>
+  </div>  
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+	<a href="{$basename2}&action=myfamily&method=signin"><input name="" type="button" value="签到" /></a>
+	<a href="{$basename2}&action=myfamily&method=donate"><input name="" type="button" value="捐赠" /></a>
+    <a href="{$basename2}&action=myfamily&method=exit"><input name="" type="button" value="出逃" /></a>
+    
+    
+   
+    
+    </div>
+  </div>
+<!--{elseif $action == memberlist}-->
+   <div class="bm_h cl">
+    <h2>成员列表</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tdat ftb mtm mbm">
+	<tr><td class="xw1">姓名</td><td class="xw1">加入时间</td><td class="xw1">签到时间</td><td class="xw1">当前任务</td><td class="xw1">城下町</td><td class="xw1">贡献值</td></tr> 
+    <!--{loop $member $key $val}-->
+    <!--{eval $val[jointime] = date('y-m-d',$val[jointime]) }-->
+    <!--{eval $val[signin] = date('y-m-d H:i',$val[signin]) }-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[uid]}</td><td>{$val[jointime]}</td><td>{$val[signin]}</td><td>{$val[mid]}</td>
+    <td>{$val[home]}</td><td>{$val[exploit]}</td>
+	</tr> 
+    <!--{/loop}--> 
+    
+    </table>
+   
+    
+    </div>
+  </div> 
+<!--{elseif $action == missionhall}-->
+   <div class="bm_h cl">
+    <h2>任务大厅</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"   class="tdat ftb mtm mbm">
+	<tr><td class="xw1">名称</td><td class="xw1">介绍</td><td class="xw1">奖励</td><td class="xw1">体力</td><td class="xw1">时间</td><td class="xw1">操作</td></tr> 
+    <!--{loop $mission $key $val}-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[m_name]}</td><td>{$val[m_intro]}</td><td>{$val[m_award]}</td><td>{$val[m_power]}</td>
+    <td>{$val[m_time]}</td><td><a href="{$basename2}&action=mission&method=accept&mid={$val[mid]}">接受</a></td>
+	</tr> 
+    <!--{/loop}--> 
+    
+    </table>
+   
+    
+    </div>
+  </div>
+<!--{elseif $action == mymission}--> 
+   <div class="bm_h cl">
+    <h2>我的任务</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+	<!--{eval $mission_finishtime = date("y-m-d H:i:s",$myfamily_info[mission_finishtime])}-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tdat ftb mtm mbm">
+	<tr><td class="xw1">名称</td><td class="xw1">介绍</td><td class="xw1">奖励</td><td class="xw1">体力</td><td class="xw1">耗时</td><td class="xw1">完成时间</td><td class="xw1">操作</td></tr> 
+    <tr class="alt"><td>{$mission[m_name]}</td><td>{$mission[m_intro]}</td><td>{$mission[m_award]}</td><td>{$mission[m_power]}</td>
+    <td>{$mission[m_time]}</td><td>{$mission_finishtime}</td><td><a href="{$basename2}&action=mission&method=drop&mid={$val[mid]}">放弃</a><a href="{$basename2}&action=mission&method=finish&mid={$val[mid]}">完成</a></td>
+	</tr> 
+    
+    </table>
+   
+    
+    </div>
+  </div>
+<!--{elseif $action == setting}--> 
+   <div class="bm_h cl">
+    <h2>家族设置</h2>
+  </div>
+  
+  <div class="bm">
+    <div class="bm_c" style="padding:5px 5px;">
+    <p class="bbda pbm mbm">您必须填写原密码才能修改下面的资料</p>
+    <form action="{$basename2}&action={$action}" method="post">
+    <input name="step" type="hidden" value="2" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="tfm">
+	<tr><th>家族介绍</th><td><div class="area">
+<textarea rows="3" cols="80" name="f_set[f_intro]" id="" class="pt">{$f_info[f_intro]}</textarea>
+</div></td></tr>
+    <tr><th>家族公告</th><td><div class="area">
+<textarea rows="3" cols="80" name="f_set[f_notice]" id="" class="pt">{$f_info[f_notice]}</textarea>
+</div></td></tr>
+    <tr><th>家族图标</th><td><input name="f_set[f_icon]" type="text" value="{$f_info[f_icon]}" class="px" /></td></tr>
+    <tr><th></th><td><input name="" type="submit" value="提交" /></td></tr>	
+    
+    </table>
+   
+    
+    </div>
+  </div>
+<!--{/if}-->
+</div>
+
+</div>

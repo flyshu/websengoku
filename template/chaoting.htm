@@ -1,0 +1,84 @@
+<script language="javascript">
+
+</script>
+
+<div class="bm bmw fl">
+<ul class="tb cl">
+<li class='a'><a href="plugin.php?id=websengoku:main&module=chaoting">官位申请</a></li>
+
+<li><a href="plugin.php?id=websengoku:main&module=chaoting&action=edit">官位编辑</a></li>
+
+</ul>
+<div style="padding:2px;"></div>
+<!--{if (!$action)}-->
+  <div class="bm_h cl">
+    <h2>官位申请</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c">
+      <table width="100%" border="0">
+        <tr>
+        <th scope="col" width="5%">排序</th>
+          <th scope="col" width="10%">品级</th>
+          <th scope="col" width="10%">官位</th>
+          <th scope="col" width="30%">介绍</th>
+          <th scope="col" width="5%">人数</th>
+          <th scope="col" width="15%">官员</th>
+          <th scope="col" width="10%">官位图标</th>
+          <th scope="col" width="15%">操作</th>
+        </tr>
+        <!--{loop $guan_info_array $val}-->
+        <tr>
+        <td>{$val[g_sort]}</td>
+          <td>{$val[g_level]}</td>
+          <td style="color:#{$val[g_color]}">{$val[g_name]}</td>
+          <td>{$val[g_desc]}</td>
+          <td>{$val[g_limit]}</td>
+          <td>{$val[g_owner]}</td>
+          <td>{$val[g_icon]}</td>
+          <!--{eval $name_code = urlencode($val[g_name]); }-->
+          <td><a href="plugin.php?id=websengoku:chaoting&action=shenqing&name={$name_code}">申请</a>
+          <!--{if ({$val})}--> 
+          <a href="plugin.php?id=websengoku:main&module=chaoting&action=edit&gid={$val[gid]}">修改</a>
+          <a href="plugin.php?id=websengoku:chaoting&action=delete&gid={$val[gid]}">删除</a>
+          <!--{/if}--> 
+          </td>
+        </tr>
+        <!--{/loop}-->
+      </table>
+    </div>
+    <div class="bm_h"> 
+		{$multipage}
+    </div>
+  </div>
+<!--{elseif $action == 'edit'}-->
+  <div class="bm_h cl">
+    <h2>官位编辑</h2>
+  </div>
+  <div class="bm_c">
+  <form action="plugin.php?id=websengoku:chaoting&action=edit" method="post">
+  <label for="gid">编号</label>
+  <input name="gid" type="text" value="{$guan[gid]}" readonly="readonly"  /><br/>
+  <label for="name">官位</label>
+  <input name="name" type="text" value="{$guan[g_name]}" />
+  <label for="level">品级</label>
+  <input name="level" type="text" value="{$guan[g_level]}"/>
+  <label for="sort">排位</label>
+  <input name="sort" type="text" value="{$guan[g_sort]}" /><br/>
+  <label for="desc">介绍</label>
+  <input name="desc" type="text" value="{$guan[g_desc]}"/>
+  <label for="color">颜色</label>
+  <input name="color" type="text" value="{$guan[g_color]}"/>
+  <label for="icon">图标</label>
+  <input name="icon" type="text" value="{$guan[g_icon]}"/><br/>
+   <label for="owner">官员</label>
+  <input name="owner" type="text" value="{$guan[g_owner]}"/><br/> 
+
+  <input name="" type="submit" value="提交" /><input name="newguan" type="checkbox" value="1" title="选中此项目则不会编辑原有官位,直接新插入官位" />新增加官位
+  </form>
+  </div>
+   <div class="bm_h cl">
+    <h2>进入管理</h2>
+  </div>
+<!--{/if}-->
+</div>

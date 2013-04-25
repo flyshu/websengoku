@@ -1,0 +1,87 @@
+<script language="javascript">
+
+</script>
+
+<!--{if !$step}-->
+<form action="plugin.php?id=websengoku:main&module=reg&step=2" method="post">
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>注册协议</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c">
+		<textarea name="" cols="90" rows="10" style="width:100%"></textarea>
+    </div>
+  </div>
+</div>
+<input name="" type="submit" value="下一步" />
+</form>
+<!--{elseif $step==2}-->
+<form action="plugin.php?id=websengoku:main&module=reg&step=3" method="post">
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>请选择职业</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat ftb mtm mbm">
+	<tr><td class="xw1">职业名称</td><td class="xw1">职业描述</td><td class="xw1">初始能力</td><td class="xw1">职业图标</td><td class="xw1">职业技能</td><td>选择</td></tr> 
+    <!--{loop $zhiye_arr $key $val}-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[z_name]}</td><td>{$val[z_desc]}</td><td>{$val[z_main_ability]}</td><td>{$val[z_icon]}</td>
+    <td>$val[z_jineng]</td><td><input name="zhiye" type="radio" value="{$val[zid]}" checked="checked" /></td></tr> 
+    <!--{/loop}--> 
+    </table>       
+
+    </div>
+  </div>
+  </div>
+  <input name="" type="submit" value="下一步" />
+ </form>
+<!--{elseif $step==3}-->
+<form action="plugin.php?id=websengoku:main&module=reg&step=4" method="post">
+<input name="zhiye" type="hidden" value="{$zhiye}" />
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>请选择出生地点</h2>
+  </div>
+  <div class="bm">
+    <div class="bm_c">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tdat ftb mtm mbm">
+	<tr><td class="xw1">城市名称</td><td class="xw1">城市类型</td><td class="xw1">城市坐标</td><td class="xw1">城主</td><td class="xw1">城市所在</td><td>选择</td></tr> 
+    <!--{loop $city_arr $key $val}-->
+    <!--{eval $class = $key %2 != 1 ? "class='alt'" : ""}-->
+    <tr {$class}><td>{$val[c_name]}</td><td>{$val[c_type]}</td><td>{$val[cx]},{$val[cy]}</td><td>{$val[c_host_name]}</td>
+    <td>$val[c_suozai]</td><td><input name="birth_city" type="radio" value="{$val[cid]}" checked="checked" /></td></tr> 
+    <!--{/loop}--> 
+    </table>         
+    </div>
+  </div>
+</div>
+<input name="" type="submit" value="下一步" />
+</form>
+<!--{elseif $step==4}-->
+<script language="javascript">
+
+</script>
+<form action="plugin.php?id=websengoku:main&module=reg&step=5" method="post">
+<input name="zhiye" type="hidden" value="{$zhiye}" />
+<input name="birth_city" type="hidden" value="{$birth_city}" />
+<div class="bm bmw fl">
+  <div class="bm_h cl">
+    <h2>初始能力配点</h2>
+  </div>
+  <div class="bm">
+  	<div class="bm_c">剩余点数0</div>
+    <div class="bm_c">
+<!--{loop $main_ability_arr[name] $key $val}-->
+    <label>{$val}</label><input name="main_ability[]" type="text" value="{$main_ability_arr[num][$key]}" /><a href="javascript:">+</a>&nbsp;<a href="javascript:">-</a><br/>
+<!--{/loop}-->   
+    </div>
+  </div>
+</div>
+<input name="" type="submit" />
+</form>
+<!--{/if}-->
+
+</form>
